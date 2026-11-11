@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "experience_id": "cpp_forge",
+  "language": "C++",
+  "standard": "c++20",
+  "platform": "android",
+  "design_principles": {
+    "teach_independent_programming": true,
+    "offline_required": true,
+    "guided_snippets_are_scaffolding": true,
+    "default_beginner_max_lines_per_file": 100,
+    "npc_challenges_require_taught_concepts": true,
+    "cumulative_review": true
+  },
+  "modules": [
+    {
+      "id": "cpp_01_first_program",
+      "title": "Your First Program",
+      "concepts": ["source_files", "headers", "main_function", "statements", "std_cout", "namespaces", "comments"],
+      "lessons": [
+        {"id": "cpp_01_01_what_is_cpp", "title": "Meet C++", "concepts": ["source_files"]},
+        {"id": "cpp_01_02_program_structure", "title": "The shape of a C++ program", "concepts": ["headers", "main_function", "statements"]},
+        {"id": "cpp_01_03_first_output", "title": "Make the computer speak", "concepts": ["std_cout", "namespaces"]},
+        {"id": "cpp_01_04_comments", "title": "Leave notes in code", "concepts": ["comments"]}
+      ],
+      "practice": ["hello_world", "two_line_message", "fix_missing_header", "fix_missing_semicolon"],
+      "npc_challenges_unlock_after": "module_practical_pass"
+    },
+    {
+      "id": "cpp_02_variables_input",
+      "title": "Variables and Input",
+      "concepts": ["int", "double", "char", "bool", "std_string", "constants", "std_cin", "type_conversion"],
+      "lessons": [
+        {"id": "cpp_02_01_variables", "title": "Give information a name", "concepts": ["int", "double", "char", "bool", "std_string"]},
+        {"id": "cpp_02_02_input", "title": "Let the player enter information", "concepts": ["std_cin"]},
+        {"id": "cpp_02_03_constants_and_types", "title": "Choosing and protecting values", "concepts": ["constants", "type_conversion"]}
+      ],
+      "practice": ["personal_greeting", "age_next_year", "simple_total"]
+    },
+    {
+      "id": "cpp_03_decisions",
+      "title": "Decisions and Conditions",
+      "concepts": ["comparison_operators", "logical_operators", "if", "else", "else_if", "switch"],
+      "practice": ["age_gate", "grade_checker", "nightclub_bouncer"]
+    },
+    {
+      "id": "cpp_04_loops",
+      "title": "Loops and Repetition",
+      "concepts": ["for", "while", "do_while", "break", "continue", "nested_loops"],
+      "practice": ["multiplication_table", "receipt_generator", "number_guessing"]
+    },
+    {
+      "id": "cpp_05_functions",
+      "title": "Functions",
+      "concepts": ["function_declaration", "parameters", "return_values", "scope", "overloading", "recursion"],
+      "practice": ["tax_calculator", "reusable_grade_checker", "menu_functions"]
+    },
+    {
+      "id": "cpp_06_arrays_strings",
+      "title": "Arrays and Strings",
+      "concepts": ["array_declaration", "array_indexing", "array_bounds", "std_string", "string_operations", "std_vector"],
+      "practice": ["price_list", "grade_average", "inventory_vector"]
+    },
+    {
+      "id": "cpp_07_pointers_references",
+      "title": "Pointers and References",
+      "concepts": ["addresses", "pointers", "nullptr", "references", "const_correctness"],
+      "practice": ["swap_values", "safe_pointer_check", "reference_parameter"]
+    },
+    {
+      "id": "cpp_08_memory_resources",
+      "title": "Memory and Resource Management",
+      "concepts": ["stack_heap", "raii", "unique_ptr", "shared_ptr", "lifetime", "ownership"],
+      "practice": ["resource_owner", "safe_dynamic_collection"]
+    },
+    {
+      "id": "cpp_09_classes",
+      "title": "Classes and Objects",
+      "concepts": ["classes", "objects", "constructors", "destructors", "encapsulation", "member_functions"],
+      "practice": ["user_account", "bank_account", "inventory_item"]
+    },
+    {
+      "id": "cpp_10_oop",
+      "title": "Object-Oriented Design",
+      "concepts": ["inheritance", "polymorphism", "virtual_functions", "abstract_classes", "composition"],
+      "practice": ["character_types", "notification_system"]
+    },
+    {
+      "id": "cpp_11_stl",
+      "title": "Standard Library and Data Structures",
+      "concepts": ["vector", "array", "map", "set", "unordered_map", "iterators", "algorithms", "stack", "queue"],
+      "practice": ["contact_index", "leaderboard", "task_queue"]
+    },
+    {
+      "id": "cpp_12_projects",
+      "title": "Multi-file C++ Projects",
+      "concepts": ["headers_and_sources", "include_guards", "namespaces", "linking", "cmake", "separate_compilation"],
+      "practice": ["split_calculator", "multi_file_inventory"]
+    },
+    {
+      "id": "cpp_13_modern_cpp",
+      "title": "Modern C++ Techniques",
+      "concepts": ["templates", "exceptions", "lambdas", "move_semantics", "auto", "range_for"],
+      "practice": ["generic_minimum", "safe_parser", "filter_records"]
+    },
+    {
+      "id": "cpp_14_advanced",
+      "title": "Advanced C++",
+      "concepts": ["threads", "synchronization", "atomics", "performance", "profiling", "undefined_behavior"],
+      "practice": ["threaded_counter", "performance_investigation"]
+    },
+    {
+      "id": "cpp_15_engineering",
+      "title": "Software Engineering with C++",
+      "concepts": ["unit_testing", "debugging", "design_patterns", "api_design", "architecture", "version_control"],
+      "practice": ["test_driven_feature", "refactor_legacy_module", "integrated_capstone"]
+    }
+  ]
+}

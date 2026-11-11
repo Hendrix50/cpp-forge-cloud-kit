@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "reference_solutions": {
+    "ref_hello_world_001": {
+      "files": {
+        "main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\\n\";\n    return 0;\n}\n"
+      },
+      "notes": [
+        "Uses the standard output stream from the iostream header.",
+        "The newline is part of the displayed output."
+      ]
+    },
+    "ref_array_bounds_001": {
+      "files": {
+        "main.cpp": "#include <iostream>\n\nint main() {\n    int prices[5] = {10, 20, 30, 40, 50};\n\n    for (int i = 0; i < 5; ++i) {\n        std::cout << prices[i] << \"\\n\";\n    }\n\n    return 0;\n}\n"
+      },
+      "notes": [
+        "A five-element array has valid indices 0 through 4.",
+        "The loop must stop before i reaches 5."
+      ]
+    }
+  }
+}

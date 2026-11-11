@@ -1,0 +1,401 @@
+{
+ "version": 1,
+ "examples": [
+  {
+   "id": "hello_world",
+   "module": "01_first_program",
+   "title": "The first program: print one line",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\\n\";\n    return 0;\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "Hello, World!\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "missing_semicolon",
+   "module": "01_first_program",
+   "title": "Clang finds a missing semicolon",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\\n\"\n    return 0;\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "expected ';'"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "forgot_std",
+   "module": "01_first_program",
+   "title": "Why std:: is needed: cout alone is unknown",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    cout << \"Hello, World!\\n\";\n    return 0;\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "use of undeclared identifier 'cout'",
+     "did you mean 'std::cout'"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "forgot_include",
+   "module": "01_first_program",
+   "title": "Forgetting the include: Clang does not even know std",
+   "files": {
+    "main.cpp": "int main() {\n    std::cout << \"Hello\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "use of undeclared identifier 'std'"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "wrong_include",
+   "module": "01_first_program",
+   "title": "Including the wrong header: std exists, cout does not",
+   "files": {
+    "main.cpp": "#include <string>\n\nint main() {\n    std::cout << \"Hello\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "no member named 'cout' in namespace 'std'"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "using_namespace_std",
+   "module": "01_first_program",
+   "title": "using namespace std; makes cout work (a company may allow it)",
+   "files": {
+    "main.cpp": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hello, World!\" << endl;\n    return 0;\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "Hello, World!\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "exit_code",
+   "module": "01_first_program",
+   "title": "main returns a number to the operating system",
+   "files": {
+    "main.cpp": "int main() {\n    return 3;\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "",
+    "exit_code": 3
+   },
+   "note": ""
+  },
+  {
+   "id": "endl_vs_newline",
+   "module": "02_output_input",
+   "title": "std::endl and \\n both end a line",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"first\" << std::endl;\n    std::cout << \"second\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "first\nsecond\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "read_a_name",
+   "module": "02_output_input",
+   "title": "Reading a line from the player",
+   "files": {
+    "main.cpp": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name;\n    std::getline(std::cin, name);\n    std::cout << \"Hello, \" << name << \"!\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "Ada\n",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "Hello, Ada!\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "integer_division",
+   "module": "03_variables_types",
+   "title": "Integer division drops the fraction",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << 7 / 2 << \" \" << 7 % 2 << \"\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "3 1\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "unused_variable_werror",
+   "module": "03_variables_types",
+   "title": "A company that treats warnings as errors",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    int unused = 5;\n    std::cout << \"x\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic",
+     "-Werror"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "unused variable 'unused'"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "namespace_and_class",
+   "module": "13_namespaces_headers",
+   "title": "A class inside namespace myapp with a getter and a setter",
+   "files": {
+    "main.cpp": "#include <iostream>\n#include <string>\n\nnamespace myapp {\nclass Player {\npublic:\n    void setName(const std::string& n) { name_ = n; }\n    const std::string& getName() const { return name_; }\n\nprivate:\n    std::string name_;\n};\n}  // namespace myapp\n\nint main() {\n    myapp::Player p;\n    p.setName(\"Ada\");\n    std::cout << p.getName() << \"\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "Ada\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "getter_not_const",
+   "module": "13_namespaces_headers",
+   "title": "A getter that forgot const cannot be used on a const object",
+   "files": {
+    "main.cpp": "#include <string>\n\nclass Player {\npublic:\n    std::string getName() { return name_; }\n\nprivate:\n    std::string name_ = \"Ada\";\n};\n\nint main() {\n    const Player p;\n    return static_cast<int>(p.getName().size());\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": false,
+    "diagnostic_contains": [
+     "not marked const"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "header_source_split",
+   "module": "13_namespaces_headers",
+   "title": "A header, a source file and main",
+   "files": {
+    "greeter.hpp": "#pragma once\n#include <string>\n\nnamespace myapp {\nstd::string greeting(const std::string& name);\n}  // namespace myapp\n",
+    "greeter.cpp": "#include \"greeter.hpp\"\n\nnamespace myapp {\nstd::string greeting(const std::string& name) { return \"Hello, \" + name + \"!\"; }\n}  // namespace myapp\n",
+    "main.cpp": "#include <iostream>\n\n#include \"greeter.hpp\"\n\nint main() {\n    std::cout << myapp::greeting(\"Ada\") << \"\\n\";\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "Hello, Ada!\n",
+    "exit_code": 0
+   },
+   "note": ""
+  },
+  {
+   "id": "array_out_of_range_stops",
+   "module": "07_arrays_strings",
+   "title": "Reading past the end of an array is caught",
+   "files": {
+    "main.cpp": "#include <iostream>\n\nint main() {\n    int prices[5] = {10, 20, 30, 40, 50};\n    for (int i = 0; i <= 5; ++i) {\n        std::cout << prices[i] << \"\\n\";\n    }\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic",
+     "-fsanitize=address,undefined"
+    ]
+   },
+   "stdin": "",
+   "limits": {},
+   "expect": {
+    "compiles": true,
+    "stdout": "10\n20\n30\n40\n50\n",
+    "ended": "stopped by a safety check"
+   },
+   "note": ""
+  },
+  {
+   "id": "endless_loop_stops",
+   "module": "05_loops",
+   "title": "An endless loop cannot freeze the game",
+   "files": {
+    "main.cpp": "int main() {\n    volatile int x = 0;\n    while (true) {\n        x = x + 1;\n    }\n}\n"
+   },
+   "profile": {
+    "compiler_standard": "c++20",
+    "compile_flags": [
+     "-Wall",
+     "-Wextra",
+     "-Wpedantic"
+    ]
+   },
+   "stdin": "",
+   "limits": {
+    "fuel": 20000000
+   },
+   "expect": {
+    "compiles": true,
+    "ended": "ran out of time"
+   },
+   "note": ""
+  }
+ ]
+}

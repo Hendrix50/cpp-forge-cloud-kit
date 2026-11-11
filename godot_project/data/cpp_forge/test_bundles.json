@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "test_bundles": {
+    "tests_hello_world_001": {
+      "compiler_standard": "c++20",
+      "compile_flags": ["-Wall", "-Wextra", "-Wpedantic", "-Werror"],
+      "runtime_flags": [],
+      "cases": [
+        {"id": "exact_greeting", "stdin": "", "stdout_exact": "Hello, World!\n", "exit_code": 0}
+      ]
+    },
+    "tests_array_bounds_001": {
+      "compiler_standard": "c++20",
+      "compile_flags": ["-Wall", "-Wextra", "-Wpedantic", "-fsanitize=address,undefined", "-fno-omit-frame-pointer"],
+      "runtime_flags": ["sanitizers_required"],
+      "cases": [
+        {"id": "prints_all_five_prices", "stdin": "", "stdout_exact": "10\n20\n30\n40\n50\n", "exit_code": 0}
+      ],
+      "notes": ["The starter contains an out-of-bounds access. The Android runtime/compiler prototype must prove sanitizer or equivalent bounds-trap support before this challenge is enabled."]
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "challenge_catalog": [
+    {
+      "id": "npc_hello_world_001",
+      "revision": 1,
+      "type": "write_from_scratch",
+      "npc": {
+        "id": "mentor_thomas",
+        "display_name": "Thomas",
+        "role": "mentor"
+      },
+      "title": "Make the computer speak",
+      "request": "Could you write a tiny program that displays Hello, World!? I want to see your first C++ program working.",
+      "topic_tags": [
+        "headers",
+        "main_function",
+        "std_cout",
+        "namespaces"
+      ],
+      "prerequisites": [
+        "headers",
+        "main_function",
+        "std_cout"
+      ],
+      "difficulty": 1,
+      "max_lines_per_file": 100,
+      "starter_files": [
+        {
+          "path": "main.cpp",
+          "content": "#include <iostream>\n\nint main() {\n    // Display the requested greeting here.\n    return 0;\n}\n"
+        }
+      ],
+      "acceptance": {
+        "must_compile": true,
+        "stdin": "",
+        "stdout_exact": "Hello, World!\n",
+        "exit_code": 0
+      },
+      "hint_ladder": [
+        "The output stream is called std::cout.",
+        "Use the insertion operator << to send text to std::cout.",
+        "Place std::cout << \"Hello, World!\\n\"; inside main()."
+      ],
+      "resource_limits": {
+        "wall_time_ms": 2000,
+        "memory_mb": 64,
+        "stdout_bytes": 4096
+      },
+      "reward": {
+        "xp": 50,
+        "tokens": 10
+      },
+      "reference_solution_id": "ref_hello_world_001",
+      "test_bundle_id": "tests_hello_world_001"
+    },
+    {
+      "id": "npc_array_bounds_001",
+      "revision": 1,
+      "type": "repair_broken_code",
+      "npc": {
+        "id": "npc_alex_shopkeeper",
+        "display_name": "Alex",
+        "role": "shopkeeper"
+      },
+      "title": "The missing price problem",
+      "request": "My shop stores five product prices, but the program sometimes prints a strange value after the last price. Can you find the problem?",
+      "topic_tags": [
+        "arrays",
+        "array_indexing",
+        "array_bounds",
+        "for_loops"
+      ],
+      "prerequisites": [
+        "array_declaration",
+        "array_indexing",
+        "array_bounds",
+        "for"
+      ],
+      "difficulty": 2,
+      "max_lines_per_file": 100,
+      "starter_files": [
+        {
+          "path": "main.cpp",
+          "content": "#include <iostream>\n\nint main() {\n    int prices[5] = {10, 20, 30, 40, 50};\n\n    for (int i = 0; i <= 5; ++i) {\n        std::cout << prices[i] << \"\\n\";\n    }\n\n    return 0;\n}\n"
+        }
+      ],
+      "acceptance": {
+        "must_compile": true,
+        "stdin": "",
+        "stdout_exact": "10\n20\n30\n40\n50\n",
+        "exit_code": 0
+      },
+      "hint_ladder": [
+        "An array with five elements uses five valid positions. Think about the first and last index.",
+        "The first element is at index 0. What is the index of the fifth element?",
+        "Check the loop condition: should it include the value 5?"
+      ],
+      "resource_limits": {
+        "wall_time_ms": 2000,
+        "memory_mb": 64,
+        "stdout_bytes": 4096
+      },
+      "reward": {
+        "xp": 80,
+        "tokens": 15
+      },
+      "reference_solution_id": "ref_array_bounds_001",
+      "test_bundle_id": "tests_array_bounds_001"
+    }
+  ]
+}
